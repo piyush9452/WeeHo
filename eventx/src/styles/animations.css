@@ -1,0 +1,33 @@
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp var(--transition-slow) forwards;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+/* Image Hover Zoom */
+.img-zoom-container {
+  overflow: hidden;
+}
+
+.img-zoom-container img {
+  transition: transform var(--transition-medium);
+}
+
+.img-zoom-container:hover img {
+  transform: scale(1.05);
+}

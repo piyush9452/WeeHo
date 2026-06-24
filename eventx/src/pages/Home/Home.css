@@ -1,0 +1,5 @@
+.home {
+  position: relative;
+  z-index: 10;
+  padding: 40px;
+}
