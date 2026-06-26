@@ -9,7 +9,14 @@ import './Home.css';
 
 const Home = () => (
   <div className="home">
-    <Hero />
+    <Hero>
+      <a href="/#tickets" className="btn btn-lime">
+        Book Tickets <span className="arrow">→</span>
+      </a>
+      <a href="/#about" className="btn btn-outline-white">
+        Learn More <span className="arrow">→</span>
+      </a>
+    </Hero>
     <Sponsors />
     <Speakers />
     <Stats />

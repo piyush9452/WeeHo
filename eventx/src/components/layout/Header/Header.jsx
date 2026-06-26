@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Header.css';
 
 const navLinks = [
-  { label: 'Speakers', href: '#speakers' },
-  { label: 'Schedule', href: '#schedule' },
-  { label: 'Sponsors', href: '#sponsors' },
-  { label: 'FAQs', href: '#faqs' },
+  { label: 'Speakers', href: '/#speakers' },
+  { label: 'Schedule', href: '/schedule' },
+  { label: 'Sponsors', href: '/#sponsors' },
+  { label: 'FAQs', href: '/faqs' },
 ];
 
 const Header = () => {

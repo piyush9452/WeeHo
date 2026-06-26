@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import './Faqs.css';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
 
 const faqs = [
   {
@@ -35,7 +49,7 @@ const faqs = [
 const FaqItem = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={`faq-item${open ? ' faq-item--open' : ''}`}>
+    <motion.div className={`faq-item${open ? ' faq-item--open' : ''}`} variants={itemVariants}>
       <button className="faq-item__trigger" onClick={() => setOpen(o => !o)}>
         <span className="faq-item__icon">{open ? '×' : '+'}</span>
         <span className="faq-item__question">{q}</span>
@@ -43,25 +57,33 @@ const FaqItem = ({ q, a }) => {
       <div className="faq-item__body">
         <p className="faq-item__answer">{a}</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-const Faqs = () => (
+const Faqs = ({ hideTitle = false }) => (
   <section className="faqs" id="faqs">
-    <div className="container">
-      <h2 className="section-title faqs__title">
-        <span className="dash">—</span>
-        FAQs
-        <span className="dash">—</span>
-      </h2>
+    <motion.div 
+      className="container"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      {!hideTitle && (
+        <motion.h2 className="section-title faqs__title" variants={itemVariants}>
+          <span className="dash">—</span>
+          FAQs
+          <span className="dash">—</span>
+        </motion.h2>
+      )}
 
       <div className="faqs__list">
         {faqs.map((item, i) => (
           <FaqItem key={i} {...item} />
         ))}
       </div>
-    </div>
+    </motion.div>
   </section>
 );
 

@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import './Newsletter.css';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
@@ -12,17 +26,23 @@ const Newsletter = () => {
 
   return (
     <section className="newsletter" id="newsletter">
-      <div className="container newsletter__inner">
-        <h2 className="section-title newsletter__title">
+      <motion.div 
+        className="container newsletter__inner"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.h2 className="section-title newsletter__title" variants={itemVariants}>
           <span className="dash nl-dash">—</span>
           Stay up to date
           <span className="dash nl-dash">—</span>
-        </h2>
+        </motion.h2>
 
         {sent ? (
-          <p className="newsletter__thanks">Thanks! We'll keep you posted.</p>
+          <motion.p className="newsletter__thanks" variants={itemVariants}>Thanks! We'll keep you posted.</motion.p>
         ) : (
-          <form className="newsletter__form" onSubmit={handleSubmit}>
+          <motion.form className="newsletter__form" onSubmit={handleSubmit} variants={itemVariants}>
             <input
               id="newsletter-email"
               type="email"
@@ -36,9 +56,9 @@ const Newsletter = () => {
             <button type="submit" className="btn btn-dark newsletter__submit">
               Keep me posted
             </button>
-          </form>
+          </motion.form>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 };

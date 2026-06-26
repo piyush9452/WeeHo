@@ -1,5 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import './Speakers.css';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
 import img1 from '../../../images/1.webp';
 import img2 from '../../../images/2.webp';
 import img3 from '../../../images/3.webp';
@@ -92,87 +106,94 @@ const Speakers = () => {
 
   return (
     <section className="speakers" id="speakers">
-      {/* Header bar */}
-      <div className="speakers__header">
-        <div className="container">
-          <h2 className="section-title speakers__title">
-            <span className="dash">—</span>
-            Speakers
-            <span className="dash">—</span>
-          </h2>
-        </div>
-      </div>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {/* Header bar */}
+        <motion.div className="speakers__header" variants={itemVariants}>
+          <div className="container">
+            <h2 className="section-title speakers__title">
+              <span className="dash">—</span>
+              Speakers
+              <span className="dash">—</span>
+            </h2>
+          </div>
+        </motion.div>
 
-      {/* Carousel */}
-      <div className="speakers__carousel-wrap">
-        <div 
-          className="speakers__track"
-          style={{
-            '--current-index': currentIndex,
-            transition: isTransitioning ? 'transform 0.5s ease-in-out' : 'none'
-          }}
-        >
-          {items.map((speaker, i) => {
-            const isActive = i === currentIndex;
-            return (
-              <div 
-                key={`${speaker.id}-${i}`}
-                className={`speaker-card ${isActive ? 'speaker-card--active' : ''}`}
-                onClick={() => {
-                  if (i !== currentIndex) {
-                    setIsTransitioning(true);
-                    setCurrentIndex(i);
-                  }
-                }}
-              >
-                {/* Image */}
-                <div className="speaker-card__img">
-                  <img src={speaker.img} alt={speaker.name} />
-                </div>
-                
-                {/* Overlay for inactive cards */}
-                <div className="speaker-card__overlay" />
-
-                {/* Normal info (hidden on hover) */}
-                <div className="speaker-card__info">
-                  <div className="speaker-card__brand">
-                    <LogoIcon />
-                    <span>LOGO</span>
+        {/* Carousel */}
+        <motion.div className="speakers__carousel-wrap" variants={itemVariants}>
+          <div 
+            className="speakers__track"
+            style={{
+              '--current-index': currentIndex,
+              transition: isTransitioning ? 'transform 0.5s ease-in-out' : 'none'
+            }}
+          >
+            {items.map((speaker, i) => {
+              const isActive = i === currentIndex;
+              return (
+                <div 
+                  key={`${speaker.id}-${i}`}
+                  className={`speaker-card ${isActive ? 'speaker-card--active' : ''}`}
+                  onClick={() => {
+                    if (i !== currentIndex) {
+                      setIsTransitioning(true);
+                      setCurrentIndex(i);
+                    }
+                  }}
+                >
+                  {/* Image */}
+                  <div className="speaker-card__img">
+                    <img src={speaker.img} alt={speaker.name} />
                   </div>
-                  <p className="speaker-card__name">{speaker.name}</p>
-                  <p className="speaker-card__role">{speaker.role}</p>
+                  
+                  {/* Overlay for inactive cards */}
+                  <div className="speaker-card__overlay" />
+
+                  {/* Normal info (hidden on hover) */}
+                  <div className="speaker-card__info">
+                    <div className="speaker-card__brand">
+                      <LogoIcon />
+                      <span>LOGO</span>
+                    </div>
+                    <p className="speaker-card__name">{speaker.name}</p>
+                    <p className="speaker-card__role">{speaker.role}</p>
+                  </div>
+
+                  {/* CTA - appears on hover */}
+                  <div className="speaker-card__cta">
+                    About the speaker 
+                    <span style={{ marginLeft: '4px' }}>→</span>
+                  </div>
                 </div>
+              );
+            })}
+          </div>
 
-                {/* CTA - appears on hover */}
-                <div className="speaker-card__cta">
-                  About the speaker 
-                  <span style={{ marginLeft: '4px' }}>→</span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+          {/* Navigation Arrows */}
+          <button className="carousel-btn carousel-btn--prev" onClick={prev} aria-label="Previous speaker">
+            <PrevIcon />
+          </button>
+          <button className="carousel-btn carousel-btn--next" onClick={next} aria-label="Next speaker">
+            <NextIcon />
+          </button>
 
-        {/* Navigation Arrows */}
-        <button className="carousel-btn carousel-btn--prev" onClick={prev} aria-label="Previous speaker">
-          <PrevIcon />
-        </button>
-        <button className="carousel-btn carousel-btn--next" onClick={next} aria-label="Next speaker">
-          <NextIcon />
-        </button>
-
-        {/* Navigation Dots */}
-        <div className="carousel-dots">
-          {speakers.map((_, i) => (
-            <button
-              key={i}
-              className={`dot ${i === (currentIndex % 5) ? 'dot--active' : ''}`}
-              onClick={() => handleDotClick(i)}
-              aria-label={`Go to speaker ${i + 1}`}
-            />
-          ))}
-        </div>
-      </div>
+          {/* Navigation Dots */}
+          <div className="carousel-dots">
+            {speakers.map((_, i) => (
+              <button
+                key={i}
+                className={`dot ${i === (currentIndex % 5) ? 'dot--active' : ''}`}
+                onClick={() => handleDotClick(i)}
+                aria-label={`Go to speaker ${i + 1}`}
+              />
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

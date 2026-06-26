@@ -1,8 +1,11 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import VideoBackground from './components/layout/VideoBackground/VideoBackground';
 import Header from './components/layout/Header/Header';
 import Footer from './components/layout/Footer/Footer';
 import Home from './pages/Home/Home';
+import Schedule from './pages/Schedule/Schedule';
+import FaqsPage from './pages/Faqs/FaqsPage';
 
 function App() {
   return (
@@ -15,7 +18,11 @@ function App() {
 
       {/* Page content scrolls over video */}
       <main>
-        <Home />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/faqs" element={<FaqsPage />} />
+        </Routes>
       </main>
 
       {/* Footer */}

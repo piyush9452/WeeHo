@@ -1,7 +1,7 @@
 /* ── Stats ─────────────────────────────────── */
 .stats {
   background-color: #111;
-  padding: 100px 0;
+  padding: 170px 40px;
   position: relative;
   z-index: 10;
   margin-bottom: 40px;
@@ -9,9 +9,10 @@
 
 .stats__inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 100px;
   align-items: center;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -21,7 +22,6 @@
 
 .stat-item__title {
   color: var(--color-primary);
-  /* lime yellow */
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -30,15 +30,14 @@
 
 .stat-item__value {
   color: #fff;
-  font-size: 4.5rem;
-  font-weight: 500;
+  font-size: 4rem;
+  font-weight: 450;
   line-height: 1;
   letter-spacing: -0.02em;
 }
 
 .stat-item__plus {
   color: var(--color-primary);
-  /* yellow plus sign */
 }
 
 /* Responsive */
