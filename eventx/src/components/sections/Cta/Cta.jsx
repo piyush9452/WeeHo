@@ -36,7 +36,7 @@ const Cta = () => (
       </motion.p>
 
       <motion.div variants={itemVariants} className="cta__actions">
-        <a href="/#tickets" className="btn btn-lime">
+        <a href="/#tickets" className="btn btn-primary">
           Book Tickets <span className="arrow">→</span>
         </a>
       </motion.div>

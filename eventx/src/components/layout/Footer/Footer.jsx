@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import weehoLogo from '../../../images/Weeho-Logo.png';
 
 const Footer = () => (
   <footer className="footer" id="footer">
@@ -8,7 +9,7 @@ const Footer = () => (
       <div className="footer__grid">
         <div className="footer__brand">
           <a href="/" className="footer__logo">
-            WEE<span className="logo-accent">HO</span>
+            <img src={weehoLogo} alt="WeeHo Logo" className="footer__logo-img" />
           </a>
         </div>
 

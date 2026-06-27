@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
+import weehoLogo from '../../../images/Weeho-Logo.png';
 
 const navLinks = [
-  { label: 'Speakers', href: '/#speakers' },
+  { label: 'Home', href: '/' },
+  { label: 'Events', href: '/events' },
+  { label: 'Performers', href: '/enroll-performer' },
+  { label: 'Host an Event', href: '/organize-event' },
   { label: 'Schedule', href: '/schedule' },
-  { label: 'Sponsors', href: '/#sponsors' },
   { label: 'FAQs', href: '/faqs' },
 ];
 
@@ -29,7 +32,7 @@ const Header = () => {
       <div className="container header__inner">
         {/* Logo */}
         <a href="/" className="header__logo">
-          WEE<span className="logo-accent">HO</span>
+          <img src={weehoLogo} alt="WeeHo Logo" className="header__logo-img" />
         </a>
 
         {/* Desktop Nav */}

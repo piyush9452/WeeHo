@@ -6,6 +6,9 @@ import Footer from './components/layout/Footer/Footer';
 import Home from './pages/Home/Home';
 import Schedule from './pages/Schedule/Schedule';
 import FaqsPage from './pages/Faqs/FaqsPage';
+import EnrollPerformer from './pages/EnrollPerformer/EnrollPerformer';
+import OrganizeEvent from './pages/OrganizeEvent/OrganizeEvent';
+import EventsGallery from './pages/EventsGallery/EventsGallery';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/faqs" element={<FaqsPage />} />
+          <Route path="/enroll-performer" element={<EnrollPerformer />} />
+          <Route path="/organize-event" element={<OrganizeEvent />} />
+          <Route path="/events" element={<EventsGallery />} />
         </Routes>
       </main>
 

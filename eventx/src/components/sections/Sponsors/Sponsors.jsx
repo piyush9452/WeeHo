@@ -2,13 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './Sponsors.css';
 
-/* ── Inline SVG brand-placeholder icon (× mark + COMPANY LOGO) ── */
-const LogoIcon = () => (
-  <svg className="brand-x" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <line x1="2" y1="2" x2="14" y2="14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square"/>
-    <line x1="14" y1="2" x2="2" y2="14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square"/>
-  </svg>
-);
+import weehoLogo from '../../../images/Weeho-Logo.png';
 
 const sponsors = [
   'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO',
@@ -19,11 +13,7 @@ const infiniteSponsors = [...sponsors, ...sponsors];
 
 const SponsorItem = ({ index }) => (
   <div className="sponsor-item" key={index}>
-    <LogoIcon />
-    <div className="sponsor-label">
-      <span className="sponsor-company">COMPANY</span>
-      <span className="sponsor-name">LOGO</span>
-    </div>
+    <img src={weehoLogo} alt="Sponsor Logo" className="sponsor-logo-img" />
   </div>
 );
 

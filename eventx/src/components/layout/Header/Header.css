@@ -6,11 +6,13 @@
   padding: 22px 0;
   transition: background var(--t-mid), padding var(--t-mid);
 }
+
 .header--scrolled {
   background-color: var(--color-bg-dark);
   padding: 14px 0;
   border-bottom: 1px solid var(--color-border-dark);
 }
+
 .header__inner {
   display: flex;
   align-items: center;
@@ -25,22 +27,38 @@
   color: #fff;
   line-height: 1;
 }
-.logo-accent { color: var(--color-primary); }
+
+.logo-accent {
+  color: var(--color-primary-light);
+}
+
+.header__logo-img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
 
 /* Desktop Nav */
-.header__nav { display: flex; }
+.header__nav {
+  display: flex;
+}
+
 .nav__list {
   display: flex;
   list-style: none;
   gap: 2.5rem;
 }
+
 .nav__link {
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   transition: color var(--t-fast);
 }
-.nav__link:hover { color: #fff; }
+
+.nav__link:hover {
+  color: #fff;
+}
 
 /* Hamburger */
 .hamburger {
@@ -56,6 +74,7 @@
   padding: 0;
   z-index: 950;
 }
+
 .hamburger span {
   display: block;
   width: 100%;
@@ -64,9 +83,18 @@
   transition: transform var(--t-mid), opacity var(--t-fast);
   transform-origin: center;
 }
-.hamburger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger--open span:nth-child(2) { opacity: 0; }
-.hamburger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.hamburger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
 
 /* Mobile Drawer */
 .mobile-drawer {
@@ -80,8 +108,16 @@
   transform: translateX(100%);
   transition: transform var(--t-mid);
 }
-.mobile-drawer--open { transform: translateX(0); }
-.mobile-nav__list { list-style: none; text-align: center; }
+
+.mobile-drawer--open {
+  transform: translateX(0);
+}
+
+.mobile-nav__list {
+  list-style: none;
+  text-align: center;
+}
+
 .mobile-nav__link {
   display: block;
   font-size: 2rem;
@@ -90,9 +126,17 @@
   padding: 1rem 0;
   transition: color var(--t-fast);
 }
-.mobile-nav__link:hover { color: var(--color-primary); }
+
+.mobile-nav__link:hover {
+  color: var(--color-primary-light);
+}
 
 @media (max-width: 768px) {
-  .header__nav { display: none; }
-  .hamburger { display: flex; }
+  .header__nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }

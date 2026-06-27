@@ -30,7 +30,7 @@ body {
   gap: 1.25rem;
   color: inherit;
 }
-.section-title .dash { color: var(--color-primary); font-weight: 400; }
+.section-title .dash { color: var(--color-primary-light); font-weight: 400; }
 
 /* ─── Links ─── */
 a { color: inherit; text-decoration: none; }
@@ -53,14 +53,15 @@ img { display: block; max-width: 100%; }
   transition: background-color var(--t-fast), color var(--t-fast), border-color var(--t-fast);
   white-space: nowrap;
 }
-.btn-lime {
-  background-color: var(--color-primary);
-  color: #000;
-  border-color: var(--color-primary);
+.btn-primary {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  border-color: var(--color-primary-dark);
 }
-.btn-lime:hover {
-  background-color: transparent;
-  color: var(--color-primary);
+.btn-primary:hover {
+  background-color: var(--color-primary-light);
+  color: #000;
+  border-color: var(--color-primary-light);
 }
 .btn-outline-white {
   background-color: transparent;
