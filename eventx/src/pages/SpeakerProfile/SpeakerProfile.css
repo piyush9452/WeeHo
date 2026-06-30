@@ -1,0 +1,105 @@
+.speaker-profile {
+  min-height: 100vh;
+  background-color: #000;
+  padding-top: 80px; /* Offset for fixed header if any */
+}
+
+.speaker-profile__banner {
+  background-color: #dbff00; /* Bright neon yellow as in design */
+  padding: 30px 0;
+  color: #000;
+}
+
+.speaker-profile__session-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.speaker-profile__session-time {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.speaker-profile__content {
+  background-color: #fff;
+  padding: 40px 0 80px;
+}
+
+.speaker-profile__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.speaker-profile__info {
+  flex: 1;
+}
+
+.speaker-profile__name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 5px;
+}
+
+.speaker-profile__role {
+  font-size: 1rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.speaker-profile__sponsor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sponsor-label {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.sponsor-logo {
+  height: 30px;
+  object-fit: contain;
+}
+
+.speaker-profile__image-container {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.speaker-profile__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.speaker-profile__description {
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 30px;
+  color: #000;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .speaker-profile__header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .speaker-profile__session-title {
+    font-size: 2rem;
+  }
+}

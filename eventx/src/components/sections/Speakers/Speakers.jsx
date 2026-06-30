@@ -14,19 +14,12 @@ const itemVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
 };
-import img1 from '../../../images/1.webp';
-import img2 from '../../../images/2.webp';
-import img3 from '../../../images/3.webp';
-import img4 from '../../../images/4.webp';
-import img5 from '../../../images/5.webp';
+import { useNavigate } from 'react-router-dom';
+import { speakersData } from '../../../data/appData';
 
-const speakers = [
-  { id: 1, name: 'Susan Lee', role: 'AI Product Manager, Reuters', img: img1 },
-  { id: 2, name: 'Rachel Chen', role: 'Head of AI Ethics, Google', img: img2 },
-  { id: 3, name: 'Dr. Michael Chen', role: 'Senior AI Researcher, OpenAI', img: img3 },
-  { id: 4, name: 'Maria Rodriguez', role: 'Chief Digital Officer, Netflix', img: img4 },
-  { id: 5, name: 'Dr. Amrit Singh', role: 'Chief Science Officer, Nvidia', img: img5 },
-];
+const speakers = speakersData;
+
+const NUM_SPEAKERS = speakers.length;
 
 // Duplicate the array 3 times for a seamless infinite loop sliding
 const items = [...speakers, ...speakers, ...speakers]; 
@@ -51,8 +44,9 @@ const NextIcon = () => (
 );
 
 const Speakers = () => {
+  const navigate = useNavigate();
   // Start in the middle section of the array
-  const [currentIndex, setCurrentIndex] = useState(7); 
+  const [currentIndex, setCurrentIndex] = useState(NUM_SPEAKERS + Math.floor(NUM_SPEAKERS / 2)); 
   const [isTransitioning, setIsTransitioning] = useState(true);
 
   const next = () => {
@@ -68,18 +62,18 @@ const Speakers = () => {
   // Infinite loop boundaries check
   useEffect(() => {
     // If we move past the middle set, silently jump back
-    if (currentIndex >= 10) {
+    if (currentIndex >= NUM_SPEAKERS * 2) {
       const timeout = setTimeout(() => {
         setIsTransitioning(false);
-        setCurrentIndex(currentIndex - 5);
+        setCurrentIndex(currentIndex - NUM_SPEAKERS);
       }, 500); // match CSS transition duration
       return () => clearTimeout(timeout);
     }
     // If we move before the middle set, silently jump forward
-    if (currentIndex <= 4) {
+    if (currentIndex <= NUM_SPEAKERS - 1) {
       const timeout = setTimeout(() => {
         setIsTransitioning(false);
-        setCurrentIndex(currentIndex + 5);
+        setCurrentIndex(currentIndex + NUM_SPEAKERS);
       }, 500);
       return () => clearTimeout(timeout);
     }
@@ -93,12 +87,12 @@ const Speakers = () => {
   }, [currentIndex]);
 
   const handleDotClick = (i) => {
-    const currentMod = currentIndex % 5;
+    const currentMod = currentIndex % NUM_SPEAKERS;
     let diff = i - currentMod;
     
     // Choose the shortest path to slide
-    if (diff > 2) diff -= 5;
-    if (diff < -2) diff += 5;
+    if (diff > Math.floor(NUM_SPEAKERS / 2)) diff -= NUM_SPEAKERS;
+    if (diff < -Math.floor((NUM_SPEAKERS - 1) / 2)) diff += NUM_SPEAKERS;
 
     setIsTransitioning(true);
     setCurrentIndex(currentIndex + diff);
@@ -146,7 +140,16 @@ const Speakers = () => {
                   }}
                 >
                   {/* Image */}
-                  <div className="speaker-card__img">
+                  <div 
+                    className="speaker-card__img" 
+                    onClick={(e) => {
+                      if (isActive) {
+                        e.stopPropagation();
+                        navigate(`/speaker/${speaker.id}`);
+                      }
+                    }}
+                    style={{ cursor: isActive ? 'pointer' : 'default' }}
+                  >
                     <img src={speaker.img} alt={speaker.name} />
                   </div>
                   
@@ -164,7 +167,13 @@ const Speakers = () => {
                   </div>
 
                   {/* CTA - appears on hover */}
-                  <div className="speaker-card__cta">
+                  <div 
+                    className="speaker-card__cta"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/speaker/${speaker.id}`);
+                    }}
+                  >
                     About the speaker 
                     <span style={{ marginLeft: '4px' }}>→</span>
                   </div>
@@ -186,7 +195,7 @@ const Speakers = () => {
             {speakers.map((_, i) => (
               <button
                 key={i}
-                className={`dot ${i === (currentIndex % 5) ? 'dot--active' : ''}`}
+                className={`dot ${i === (currentIndex % NUM_SPEAKERS) ? 'dot--active' : ''}`}
                 onClick={() => handleDotClick(i)}
                 aria-label={`Go to speaker ${i + 1}`}
               />

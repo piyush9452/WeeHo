@@ -2,20 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './Sponsors.css';
 
-import weehoLogo from '../../../images/Weeho-Logo.png';
+import { useNavigate } from 'react-router-dom';
+import { sponsorsData } from '../../../data/appData';
 
-const sponsors = [
-  'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO', 'LOGO',
-];
+const infiniteSponsors = [...sponsorsData, ...sponsorsData];
 
-/* Duplicate the array to create a seamless infinite loop */
-const infiniteSponsors = [...sponsors, ...sponsors];
-
-const SponsorItem = ({ index }) => (
-  <div className="sponsor-item" key={index}>
-    <img src={weehoLogo} alt="Sponsor Logo" className="sponsor-logo-img" />
-  </div>
-);
+const SponsorItem = ({ sponsor, index }) => {
+  const navigate = useNavigate();
+  return (
+    <div 
+      className="sponsor-item" 
+      key={index}
+      onClick={() => navigate(`/sponsor/${sponsor.id}`)}
+      style={{ cursor: 'pointer' }}
+    >
+      <img src={sponsor.logo} alt={`Sponsor ${sponsor.name}`} className="sponsor-logo-img" />
+    </div>
+  );
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -55,8 +59,8 @@ const Sponsors = () => (
       viewport={{ once: true }}
     >
       <div className="sponsors__ticker-track">
-        {infiniteSponsors.map((_, i) => (
-          <SponsorItem key={i} index={i} />
+        {infiniteSponsors.map((sponsor, i) => (
+          <SponsorItem key={i} sponsor={sponsor} index={i} />
         ))}
       </div>
     </motion.div>
