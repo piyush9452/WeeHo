@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import weehoLogo from '../../../images/Weeho-Logo.png';
 
@@ -28,23 +29,12 @@ const Header = () => {
   }, [menuOpen]);
 
   return (
-    <header className={`header${scrolled ? ' header--scrolled' : ''}`}>
+    <header className={`header${scrolled ? ' header--scrolled' : ''}${menuOpen ? ' header--menu-open' : ''}`}>
       <div className="container header__inner">
         {/* Logo */}
-        <a href="/" className="header__logo">
+        <Link to="/" className="header__logo" onClick={() => setMenuOpen(false)}>
           <img src={weehoLogo} alt="WeeHo Logo" className="header__logo-img" />
-        </a>
-
-        {/* Desktop Nav */}
-        <nav className="header__nav" aria-label="Main navigation">
-          <ul className="nav__list">
-            {navLinks.map(link => (
-              <li key={link.label}>
-                <a href={link.href} className="nav__link">{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        </Link>
 
         {/* Hamburger */}
         <button
@@ -57,21 +47,33 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Full Screen Menu */}
       <div className={`mobile-drawer${menuOpen ? ' mobile-drawer--open' : ''}`}>
-        <ul className="mobile-nav__list">
-          {navLinks.map(link => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className="mobile-nav__link"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="mobile-drawer__content">
+          <ul className="mobile-nav__list">
+            {navLinks.map(link => (
+              <li key={link.label}>
+                <Link
+                  to={link.href}
+                  className="mobile-nav__link"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          
+          <div className="mobile-drawer__footer">
+            <Link 
+              to="/events" 
+              className="btn btn-yellow-reversed mobile-drawer__btn"
+              onClick={() => setMenuOpen(false)}
+            >
+              Book Tickets <span className="arrow">→</span>
+            </Link>
+          </div>
+        </div>
       </div>
     </header>
   );

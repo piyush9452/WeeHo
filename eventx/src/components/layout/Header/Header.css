@@ -13,6 +13,12 @@
   border-bottom: 1px solid var(--color-border-dark);
 }
 
+/* Ensure the header gets a solid background when the menu is open, so it matches the full-screen overlay */
+.header--menu-open {
+  background-color: #0c0c0c;
+  border-bottom: none;
+}
+
 .header__inner {
   display: flex;
   align-items: center;
@@ -26,6 +32,8 @@
   letter-spacing: -0.02em;
   color: #fff;
   line-height: 1;
+  position: relative;
+  z-index: 960;
 }
 
 .logo-accent {
@@ -38,31 +46,9 @@
   display: block;
 }
 
-/* Desktop Nav */
-.header__nav {
-  display: flex;
-}
-
-.nav__list {
-  display: flex;
-  list-style: none;
-  gap: 2.5rem;
-}
-
-.nav__link {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  transition: color var(--t-fast);
-}
-
-.nav__link:hover {
-  color: #fff;
-}
-
-/* Hamburger */
+/* Hamburger - ALWAYS VISIBLE */
 .hamburger {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -72,7 +58,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 950;
+  z-index: 960;
 }
 
 .hamburger span {
@@ -96,47 +82,79 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile Drawer */
+/* Mobile Drawer (Full Screen Menu) */
 .mobile-drawer {
   position: fixed;
-  inset: 0;
-  background-color: var(--color-bg-dark);
+  inset: 0 0 15vh 0; /* Leaves bottom 15% visible */
+  background-color: #0c0c0c;
   z-index: 850;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: translateX(100%);
-  transition: transform var(--t-mid);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  border-bottom: 1px solid #333; /* Optional border to cleanly separate the cutoff */
 }
 
 .mobile-drawer--open {
-  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
 }
 
+.mobile-drawer__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Links */
 .mobile-nav__list {
   list-style: none;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .mobile-nav__link {
   display: block;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.5rem; /* Increased from 0.95rem */
+  font-weight: 500;
   color: #fff;
-  padding: 1rem 0;
   transition: color var(--t-fast);
+  letter-spacing: 0.02em;
 }
 
 .mobile-nav__link:hover {
   color: var(--color-primary-light);
 }
 
-@media (max-width: 768px) {
-  .header__nav {
-    display: none;
-  }
+/* Footer of the Drawer */
+.mobile-drawer__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px;
+}
 
-  .hamburger {
-    display: flex;
-  }
+/* Book Tickets Button - Reversed */
+.btn-yellow-reversed {
+  background-color: var(--color-primary-light);
+  color: #000;
+  border: 2px solid transparent;
+}
+
+.btn-yellow-reversed:hover {
+  background-color: transparent;
+  color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+
+.mobile-drawer__btn {
+  padding: 12px 28px;
+  font-size: 0.95rem;
 }

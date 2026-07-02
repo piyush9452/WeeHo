@@ -49,8 +49,7 @@ const EventsGallery = () => {
       <div className="page-wrapper events-page" style={{ paddingTop: '60px' }}>
         <section className="gallery-section container">
           <div className="gallery-header">
-            <h1 className="page-title">Upcoming <span className="highlight-gold">Global Events</span></h1>
-            <p className="page-subtitle">Browse and register for premier online experiences curated by WeeHo.</p>
+            <h1 className="page-title">Upcoming <span className="highlight-gold">Events</span></h1>
           </div>
           <div className="events-grid">
             {MOCK_EVENTS.map(event => (
