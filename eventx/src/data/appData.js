@@ -2,7 +2,24 @@ import img1 from '../images/1.webp';
 import img2 from '../images/2.webp';
 import img3 from '../images/3.webp';
 import img4 from '../images/4.webp';
+import img5 from '../images/5.webp';
 import weehoLogo from '../images/Weeho-Logo.png';
+
+export const upcomingEvents = [
+  { id: 1, title: 'AI in 2026', date: 'Jul 15, 2026', location: 'San Francisco, CA', img: img1, description: 'Explore the future of AI.' },
+  { id: 2, title: 'Tech Summit', date: 'Aug 20, 2026', location: 'New York, NY', img: img2, description: 'Annual tech summit.' },
+  { id: 3, title: 'Web3 Unlocked', date: 'Sep 05, 2026', location: 'London, UK', img: img3, description: 'Diving into Web3 and blockchain.' },
+  { id: 4, title: 'React Conf', date: 'Oct 12, 2026', location: 'Online', img: img4, description: 'The biggest React conference.' },
+  { id: 5, title: 'Design Masters', date: 'Nov 01, 2026', location: 'Paris, France', img: img5, description: 'Mastering modern UI/UX.' }
+];
+
+export const pastEvents = [
+  { id: 101, title: 'Cloud Computing 101', date: 'Jan 10, 2026', location: 'Seattle, WA', img: img5, description: 'Basics of cloud infrastructure.' },
+  { id: 102, title: 'Data Science Summit', date: 'Feb 15, 2026', location: 'Boston, MA', img: img4, description: 'Deep dive into data science.' },
+  { id: 103, title: 'Frontend Masters', date: 'Mar 20, 2026', location: 'Austin, TX', img: img3, description: 'Advanced frontend techniques.' },
+  { id: 104, title: 'Cybersecurity 2026', date: 'Apr 05, 2026', location: 'Chicago, IL', img: img2, description: 'Latest in cybersecurity.' },
+  { id: 105, title: 'Startup Pitch', date: 'May 12, 2026', location: 'San Francisco, CA', img: img1, description: 'Founders pitching their startups.' }
+];
 
 export const speakersData = [
   { 

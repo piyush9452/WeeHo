@@ -1,11 +1,11 @@
 import React from 'react';
 import Hero from '../../components/sections/Hero/Hero';
-import Sponsors from '../../components/sections/Sponsors/Sponsors';
+import EventsSection from '../../components/sections/EventsSection/EventsSection';
 import Speakers from '../../components/sections/Speakers/Speakers';
 import Stats from '../../components/sections/Stats/Stats';
 import Faqs from '../../components/sections/Faqs/Faqs';
 import Newsletter from '../../components/sections/Newsletter/Newsletter';
-import ServicesTeaser from '../../components/sections/ServicesTeaser/ServicesTeaser';
+import { upcomingEvents, pastEvents } from '../../data/appData';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
@@ -19,8 +19,8 @@ const Home = () => (
         Learn More <span className="arrow">→</span>
       </a>
     </Hero>
-    <ServicesTeaser />
-    <Sponsors />
+    <EventsSection title="Upcoming Events" events={upcomingEvents} theme="white" />
+    <EventsSection title="Past Events" events={pastEvents} theme="black" />
     <Speakers />
     <Stats />
     <Faqs />

@@ -10,7 +10,6 @@ import EnrollPerformer from './pages/EnrollPerformer/EnrollPerformer';
 import OrganizeEvent from './pages/OrganizeEvent/OrganizeEvent';
 import EventsGallery from './pages/EventsGallery/EventsGallery';
 import SpeakerProfile from './pages/SpeakerProfile/SpeakerProfile';
-import SponsorProfile from './pages/SponsorProfile/SponsorProfile';
 
 function App() {
   return (
@@ -31,7 +30,6 @@ function App() {
           <Route path="/organize-event" element={<OrganizeEvent />} />
           <Route path="/events" element={<EventsGallery />} />
           <Route path="/speaker/:id" element={<SpeakerProfile />} />
-          <Route path="/sponsor/:id" element={<SponsorProfile />} />
         </Routes>
       </main>
 
