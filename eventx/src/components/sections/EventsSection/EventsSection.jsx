@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import './EventsSection.css';
+import { useNavigate } from 'react-router-dom';
+import Home from '../../../pages/Home/Home';
 
 const PrevIcon = () => (
   <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -14,6 +16,10 @@ const NextIcon = () => (
 );
 
 const EventsSection = ({ title, events, theme = 'white' }) => {
+  const navigate = useNavigate();
+  const pastEventDetail = (event) => {
+        navigate(`/events/${event.id}/detail` , {state:event})
+    }
   const carouselRef = useRef(null);
 
   const scrollLeft = () => {
@@ -53,7 +59,7 @@ const EventsSection = ({ title, events, theme = 'white' }) => {
           <div className="events-section__carousel" ref={carouselRef}>
             {events.map((event) => (
               <div className="events-section__card" key={event.id}>
-                <div className="events-section__card-img-wrapper">
+                <div onClick={() =>pastEventDetail(event)} className="events-section__card-img-wrapper">
                   <img src={event.img} alt={event.title} className="events-section__card-img" />
                 </div>
                 <div className="events-section__card-content">
