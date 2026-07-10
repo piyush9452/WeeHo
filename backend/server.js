@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import express from 'express';
 import cors from 'cors';
 
@@ -33,3 +34,27 @@ app.get('/api/venues', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Backend server is running on http://localhost:${PORT}`);
 });
+=======
+import express from 'express'
+import dotenv from 'dotenv'
+import mongoose from 'mongoose'
+dotenv.config()
+import cors from 'cors'
+import eventConsultation from './controllers/eventRoute.js'
+
+const app = express()
+
+app.use(express.json())
+app.use(cors())
+app.use('/events',eventConsultation)
+
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log('Database connected'))
+.catch((err) => console.log(err))
+    
+const PORT = process.env.PORT
+
+app.listen(PORT , () => {
+    console.log('Server connected')
+})
+>>>>>>> cdf65bf (past event page added)
