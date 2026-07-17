@@ -1,0 +1,211 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.admin-dashboard{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:transparent;
+    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    padding:40px;
+}
+
+.dashboard-content{
+    width:100%;
+    max-width:1200px;
+    text-align:center;
+}
+
+/* ---------- Top Right Login ---------- */
+
+.top-actions{
+    position:fixed;
+    top:30px;
+    right:150px;   /* Leaves space for the menu button */
+    z-index:1000;
+}
+
+.login-btn{
+    padding:12px 28px;
+    background:#A30E0E;
+    color:white;
+    border:none;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    background:#830b0b;
+}
+
+/* ---------- Heading ---------- */
+
+.welcome-text{
+    font-size:55px;
+    font-weight:900;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+
+.welcome-text span{
+    color:#A30E0E;
+}
+
+.dashboard-subtitle{
+    font-size:19px;
+    color:#d0d0d0;
+    margin-bottom:70px;
+}
+
+/* ---------- Cards ---------- */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:40px;
+}
+
+.dashboard-card{
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    min-height:320px;
+
+    padding:45px 35px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,.25),
+        inset 0 0 0 1px rgba(255,255,255,.04);
+
+    transition:.35s;
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#A30E0E;
+
+    box-shadow:
+        0 15px 45px rgba(163,14,14,.35),
+        0 0 60px rgba(163,14,14,.18);
+
+}
+
+.dashboard-card h2{
+
+    font-size:30px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    margin-bottom:25px;
+
+}
+
+.dashboard-card p{
+
+    flex:1;
+
+    color:#d8d8d8;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+}
+
+/* ---------- Card Button ---------- */
+
+.card-btn{
+
+    align-self:center;
+
+    margin-top:35px;
+
+    padding:12px 26px;
+
+    min-width:180px;
+
+    background:#A30E0E;
+
+    color:white;
+
+    border:none;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.card-btn:hover{
+
+    background:#830b0b;
+
+    transform:scale(1.05);
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:768px){
+
+    .admin-dashboard{
+        padding:20px;
+    }
+
+    .welcome-text{
+        font-size:38px;
+    }
+
+    .dashboard-subtitle{
+        font-size:16px;
+        margin-bottom:45px;
+    }
+
+    .dashboard-card{
+        padding:35px 25px;
+        min-height:280px;
+    }
+
+    .dashboard-card h2{
+        font-size:24px;
+    }
+
+    .dashboard-card p{
+        font-size:15px;
+    }
+
+    .top-actions{
+        top:20px;
+        right:20px;
+    }
+
+    .login-btn{
+        padding:10px 20px;
+        font-size:14px;
+    }
+
+}

@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import weehoLogo from '../../../images/Weeho-Logo.png';
+import { useAdmin } from '../../../Context/AdminContext';
 
+
+const Header = () => {
+const {admin} = useAdmin()
+
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Events', href: '/events' },
@@ -10,11 +17,8 @@ const navLinks = [
   { label: 'Host an Event', href: '/organize-event' },
   { label: 'Schedule', href: '/schedule' },
   { label: 'FAQs', href: '/faqs' },
+  { label: 'Admin', href: (admin) ? '/admin/dashboard' : '/admin'},
 ];
-
-const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);

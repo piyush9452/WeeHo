@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../EnrollPerformer/EnrollPerformer.css'; // Re-use form styling
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const OrganizeEvent = () => {
   const [formdata , setFormdata] = useState({
@@ -11,6 +12,8 @@ const OrganizeEvent = () => {
     targetAudience: 'global',
     date: '',
     })
+
+    const navigate = useNavigate();
 
     const [message , setMessage] = useState()
 
@@ -25,6 +28,7 @@ const OrganizeEvent = () => {
     try {
       const res = await axios.post('http://localhost:5000/events/event',formdata)
       setMessage(res.data.message)
+      navigate(-1)
     } catch (error) {
       console.log(error?.response?.data?.message)
     }

@@ -11,7 +11,10 @@ import OrganizeEvent from './pages/OrganizeEvent/OrganizeEvent';
 import EventsGallery from './pages/EventsGallery/EventsGallery';
 import SpeakerProfile from './pages/SpeakerProfile/SpeakerProfile';
 import PastEventDetails from './pages/PastEventDetails/PastEventDetails';
-
+import Admin from './pages/Admin/Admin';
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
+import EventRequest from './pages/EventRequests/EventRequests';
+import PerformerRequest from './pages/PerformerRequest/PerformerRequest';
 function App() {
   return (
     <>
@@ -30,6 +33,10 @@ function App() {
           <Route path="/enroll-performer" element={<EnrollPerformer />} />
           <Route path="/organize-event" element={<OrganizeEvent />} />
           <Route path="/events" element={<EventsGallery />} />
+          <Route path="/admin" element={<Admin/>} />
+          <Route path="/admin/events" element={<EventRequest/>} />
+          <Route path="/admin/performers" element={<PerformerRequest/>} />
+          <Route path="/admin/dashboard" element={<AdminDashboard/>} />
           <Route path="/speaker/:id" element={<SpeakerProfile />} />
           <Route path= "/events/:id/detail" element={<PastEventDetails/>}/>
         </Routes>
